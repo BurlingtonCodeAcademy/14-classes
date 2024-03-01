@@ -1,19 +1,31 @@
-// class Pizza {
-//     constructor(diameter, type) {
-//         this.diameter = diameter;
-//         this.type = type;
-//     }
+class Pizza {
+    constructor(diameter, type) {
+        if (diameter < 10 || diameter > 20) {
+            throw new Error("Diameter should be between 10 and 20 inches!");
+        }
 
-//     bake() {
-//         console.log("Baking pizza... it should be ready in 5 minutes!");
-//     }
-// }
+        this.diameter = diameter;
 
-// // create a pizza
-// let myPepperoniPizza = new Pizza(16, "pepperoni");
-// let mySupremePizza = new Pizza(18, "supreme");
+        if (type.toLowerCase() === "pineapple") {
+            throw new Error("Pineapple is not supported!");
+        }
 
-// console.log("First example", myPepperoniPizza, mySupremePizza);
+        this.type = type;
+    }
+
+    bake() {
+        console.log("Baking pizza... it should be ready in 5 minutes!");
+    }
+}
+
+// create a pizza
+let myPepperoniPizza = new Pizza(16, "pepperoni");
+// let mySmallPineapplePizza = new Pizza(10, "pineapple");
+let myMediumSupremePizza = new Pizza(14, "supreme");
+
+// console.log("First example", myPepperoniPizza);
+// // console.log("Second example", mySmallPineapplePizza);
+// console.log("Third example", myMediumSupremePizza);
 
 // myPepperoniPizza.diameter = 18;
 // myPepperoniPizza.type = "pepperoni with extra cheese";
@@ -36,10 +48,26 @@ class Circle {
     circumference() {
         return 2 * Math.PI * this.radius;
     }
+
+    static fromDiameter(diameter) {
+        return new Circle(diameter / 2);
+    }
 }
 
-let myCircle = new Circle(35);
+// let myCircle = new Circle(35);
 
-console.log(myCircle);
-console.log(myCircle.area());
-console.log(myCircle.circumference());
+// console.log(myCircle);
+// console.log(myCircle.area());
+// console.log(myCircle.circumference());
+
+function circleFromDiameter(diameter) {
+    return new Circle(diameter / 2);
+}
+
+let anotherCircle = circleFromDiameter(100);
+console.log(anotherCircle);
+
+
+
+let c = Circle.fromDiameter(2)
+console.log(c);
